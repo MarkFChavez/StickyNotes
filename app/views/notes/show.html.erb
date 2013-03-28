@@ -75,7 +75,7 @@
 				<% @comments.each do |comment| %>
 					<%= div_for comment, style:"margin-left:50px" do %>
 						<blockquote>
-							<p> <%= comment.text %> </p>
+							<p> <%= raw comment.text %> </p>
 							<small> <%= comment.comment_by %> </small>
 						</blockquote>
 					<% end %>
