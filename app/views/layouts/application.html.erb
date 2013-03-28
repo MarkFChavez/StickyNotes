@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>StickyNotes</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
@@ -8,7 +9,17 @@
 </head>
 <body>
 
-<%= yield %>
+<div class="navbar navbar-inverse navbar-fixed-top">
+  <div class="navbar-inner">
+  	<div class="container-fluid">
+	    <a class="brand" href="#">Sticky Notes</a>
+	</div>
+  </div>
+</div>
+
+<div class="container-fluid" style="margin-top:50px">
+	<%= yield %>
+</div>
 
 </body>
 </html>
