@@ -1,0 +1,24 @@
+<% if !@notes.empty? %>
+
+	<% @notes.each do |note| %>
+		<%= div_for note do %>
+			<label class="note-creator label label-success"> noted by <%= note.noted_by %> </label>
+			<p class="lead name"> <%= note.name %> </p>
+
+			<div class="note-content">
+				<%= raw note.description %>
+			</div>
+
+			<div class="note-actions pull-right">
+				<%= link_to "Delete", note, method: :delete, remote: true, class:"btn btn-danger btn-small" %>
+			</div>
+
+			<div class="clearfix"></div>
+		<% end %>
+	<% end %>
+
+<% else %>
+	<div class="alert alert-warning">
+		No notes available. <%= link_to "Create a note", new_note_path %>.
+	</div>
+<% end %>
