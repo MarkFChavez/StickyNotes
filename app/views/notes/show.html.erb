@@ -1,0 +1,93 @@
+
+<div class="row-fluid">
+
+	<div class="span12">
+
+		<h1> You are viewing... </h1>
+		<hr />
+
+	</div>
+
+</div>
+
+<% if notice %>
+	<div class="alert alert-success">
+		<%= notice %>
+	</div>
+<% end %>
+
+<% if alert %>
+	<div class="alert alert-error">
+		<%= alert %>
+	</div>
+<% end %>
+
+<div class="row-fluid">
+
+	<div class="span5">
+
+		<div class="note">
+
+			<p class="lead name"> <%= @note.name %> </p>
+
+			<div class="note-content">
+				<%= raw @note.description %>
+			</div>
+
+			<div class="note-footer" style="margin-top:20px">
+				Created by: <%= @note.noted_by %><%= "."*30 %>
+			</div>
+
+			<div class="clearfix"></div>
+
+		</div>
+
+		<hr />
+
+		<div id="comment-area">
+			<p class="lead">Go give this user a comment!</p>
+			<%= form_for([@note, Comment.new]) do |f| %>
+				<%= f.text_field :comment_by, {class:"span4",placeholder:"#name",required:"required"} %> <br />
+				<%= f.text_area :text, {class:"span5",placeholder:"#comment",style:"height:100px",required:"required"} %> <br />
+				<%= button_tag type:"submit", class:"btn" do %>
+					<i class="icon icon-cog"></i> Here you go!
+				<% end %>
+			<% end %>
+		</div>
+
+	</div>
+
+	<div class="span7">
+
+		<div id="notes-comments">
+
+			<div>
+				<blockquote>
+					<p class="lead"> What do others have to say... </p>
+					<small> You'll have to thank them someday. :) </small>
+				</blockquote>
+				<label class="label label-success">Got <%= pluralize(@comments.count, "feedback") %></label>
+			</div>
+
+			<hr />
+
+			<% if !@comments.empty? %>
+				<% @comments.each do |comment| %>
+					<%= div_for comment, style:"margin-left:50px" do %>
+						<blockquote>
+							<p> <%= comment.text %> </p>
+							<small> <%= comment.comment_by %> </small>
+						</blockquote>
+					<% end %>
+				<% end %>
+			<% else %>
+				<div class="alert alert-warning">
+					<span style="font-weight:bold">Whooszz!</span> No feedbacks yet.
+				</div>
+			<% end %>
+
+		</div>
+
+	</div>
+
+</div>

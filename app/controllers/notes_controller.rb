@@ -1,6 +1,6 @@
 class NotesController < ApplicationController
 
-	before_filter :get_note, only: [:destroy, :edit, :update]
+	before_filter :get_note, only: [:show, :destroy, :edit, :update]
 
 	def get_note
 		@note = Note.find(params[:id])
@@ -8,6 +8,10 @@ class NotesController < ApplicationController
 
 	def index
 		@notes = Note.order("created_at DESC").limit(5)
+	end
+
+	def show
+		@comments = @note.comments.order("created_at ASC")
 	end
 
 	def create
