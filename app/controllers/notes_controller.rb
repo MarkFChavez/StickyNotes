@@ -1,5 +1,11 @@
 class NotesController < ApplicationController
 
+	before_filter :get_note, only: [:destroy, :edit, :update]
+
+	def get_note
+		@note = Note.find(params[:id])
+	end	
+
 	def index
 		@notes = Note.order("created_at DESC").limit(5)
 	end
@@ -15,8 +21,18 @@ class NotesController < ApplicationController
 	end
 
 	def destroy
-		@note = Note.find(params[:id])
 		@note.destroy
+	end
+
+	def edit
+	end
+
+	def update
+		if @note.update_attributes(params[:note])
+			redirect_to root_path, notice: "Note updated"
+		else
+			render "edit"
+		end
 	end
 
 end

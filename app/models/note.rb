@@ -1,8 +1,8 @@
 class Note < ActiveRecord::Base
 	has_many :comments
-	before_save :nl2br
+	#before_save :nl2br
 
-	validates :name, presence: true
+	validates :name, presence: true, uniqueness: true
 	validates :description, presence: true
 	validates :noted_by, presence: true
 
