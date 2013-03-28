@@ -7,6 +7,6 @@ class Note < ActiveRecord::Base
 	validates :noted_by, presence: true
 
 	def nl2br
-		self.description.html_safe.gsub!(/\n/, "<br />")
+		self.description.gsub!(/\n/, "<br />")
 	end
 end
