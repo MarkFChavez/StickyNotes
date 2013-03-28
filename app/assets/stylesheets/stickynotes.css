@@ -20,8 +20,6 @@
 .note .note-creator {
 	float: right;
 	display: none;
-  position: absolute;
-  left: 355px;
 }
 
 #create-note {
