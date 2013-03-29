@@ -74,8 +74,10 @@
 				<% @comments.each do |comment| %>
 					<%= div_for comment, style:"margin-left:50px" do %>
 						<blockquote>
-							<img src="/assets/pic.jpg" style="width:48px;height:48px" class="pull-left" />
-							<p> <%= simple_format comment.text %> </p>
+							<img src="/assets/pic.jpg" style="width:48px;height:48px" class="pull-right" />
+							<p> 
+								<%= simple_format comment.text %> 
+							</p>
 							<small> <%= comment.comment_by %> </small>
 						</blockquote>
 						<hr />
