@@ -31,7 +31,7 @@
 			<p class="lead name"> <%= @note.name %> </p>
 
 			<div class="note-content">
-				<%= raw @note.description %>
+				<%= simple_format @note.description %>
 			</div>
 
 			<div class="note-footer" style="margin-top:20px">
@@ -75,7 +75,7 @@
 				<% @comments.each do |comment| %>
 					<%= div_for comment, style:"margin-left:50px" do %>
 						<blockquote>
-							<p> <%= raw comment.text %> </p>
+							<p> <%= simple_format comment.text %> </p>
 							<small> <%= comment.comment_by %> </small>
 						</blockquote>
 					<% end %>
