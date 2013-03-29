@@ -48,7 +48,7 @@
 			<p class="lead">Go give this user a comment!</p>
 			<%= form_for([@note, Comment.new]) do |f| %>
 				<%= f.text_field :comment_by, {class:"span4",placeholder:"#name",required:"required"} %> <br />
-				<%= f.text_area :text, {class:"span5",placeholder:"#comment",style:"height:100px",required:"required"} %> <br />
+				<%= f.text_area :text, {class:"span12",placeholder:"#comment",style:"height:200px",required:"required"} %> <br />
 				<%= button_tag type:"submit", class:"btn" do %>
 					<i class="icon icon-cog"></i> Here you go!
 				<% end %>
