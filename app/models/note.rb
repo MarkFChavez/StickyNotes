@@ -1,5 +1,5 @@
 class Note < ActiveRecord::Base
-	has_many :comments
+	has_many :comments, dependent: :destroy
 	#before_save :nl2br
 
 	validates :name, presence: true, uniqueness: true

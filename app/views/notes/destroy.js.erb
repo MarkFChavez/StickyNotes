@@ -1,2 +1,6 @@
 
-$("#<%= dom_id(@note) %>").fadeOut();
+<% if Note.count == 0 %>
+	window.location.href = "<%= root_url %>";
+<% else %>
+	$("#<%= dom_id(@note) %>").fadeOut();
+<% end %>
