@@ -3,7 +3,7 @@
 	<% @notes.each do |note| %>
 		<%= div_for note do %>
 
-			<div class="note-creator"><label class="label label-success"> noted by <%= note.noted_by %> </label><br />
+			<div class="note-creator"><label class="label label-success"> noted by <%= note.user.email %> </label><br />
 			<label class="label label-info"> got <%= pluralize(note.comments.count, "comment") %> </label></div>
 			<p class="lead name"> <%= note.name %> </p>
 
@@ -11,10 +11,19 @@
 				<%= simple_format note.description %>
 			</div>
 
+
 			<div class="note-actions pull-right">
+
+				<% if user_signed_in? %>
 				<%= link_to raw("<i class='icon icon-fire icon-white'></i> Comment"), note_path(note), class:"btn btn-warning btn-small" %>
-				<%= link_to raw("<i class='icon icon-th-large icon-white'></i> Edit"), edit_note_path(note), class:"btn btn-inverse btn-small" %>
-				<%= link_to raw("<i class='icon icon-remove icon-white'></i> Delete"), note, method: :delete, remote: true, confirm: "Are you sure you want to delete?", class:"btn btn-danger btn-small" %>
+				<% end %>
+
+				<!-- only the creator will be able to do these actions -->
+				<% if user_signed_in? && note.user == current_user %>
+					<%= link_to raw("<i class='icon icon-th-large icon-white'></i> Edit"), edit_note_path(note), class:"btn btn-inverse btn-small" %>
+					<%= link_to raw("<i class='icon icon-remove icon-white'></i> Delete"), note, method: :delete, remote: true, confirm: "Are you sure you want to delete?", class:"btn btn-danger btn-small" %>
+				<% end %>
+				
 			</div>
 
 			<div class="clearfix"></div>
@@ -23,6 +32,6 @@
 
 <% else %>
 	<div class="alert alert-warning">
-		No notes available. <%= link_to "Create a note", new_note_path %>.
+		No notes available.
 	</div>
 <% end %>

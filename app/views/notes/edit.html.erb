@@ -17,7 +17,6 @@
 		<%= form_for(@note) do |f| %>
 			<%= f.text_field :name, {placeholder:"#title",class:"span3 input-small"} %> <br />
 			<%= f.text_area :description, {class:"span6 input-small textarea wysihtml5-editor placeholder",style:"height:200px",placeholder:"#putyournotehere"} %> <br />
-			<%= f.text_field :noted_by, {placeholder:"#createdby",class:"span2 input-small"} %> <br />
 			<%= button_tag type:"submit",class:"btn btn-primary" do %>
 				<i class="icon icon-plus-sign icon-white"></i> Save Note
 			<% end %>

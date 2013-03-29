@@ -1,5 +1,6 @@
 class NotesController < ApplicationController
 
+	before_filter :authenticate_user!, except: [:index, :show]
 	before_filter :get_note, only: [:show, :destroy, :edit, :update]
 
 	def get_note
@@ -16,6 +17,7 @@ class NotesController < ApplicationController
 
 	def create
 		@note = Note.create(params[:note])
+		@note.user = current_user
 
 		if @note.save
 			redirect_to root_path, notice: "Note created."

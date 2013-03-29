@@ -1,12 +1,10 @@
 class Note < ActiveRecord::Base
-	has_many :comments, dependent: :destroy
+	has_many :comments, dependent: :delete_all
 	#before_save :nl2br
 
 	validates :name, presence: true, uniqueness: true
 	validates :description, presence: true
-	validates :noted_by, presence: true
+	#validates :noted_by, presence: true
 
-	def nl2br
-		self.description.gsub!(/\n/, "<br />")
-	end
+	belongs_to :user
 end

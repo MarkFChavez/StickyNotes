@@ -20,9 +20,8 @@
 	</div>
 <% end %>
 
-
+<% if user_signed_in? %>
 <div class="row-fluid">
-
 	<div class="span12">
 		<a id="toggle-form" href="#" class="btn"><i class="icon icon-asterisk"></i> Create Note!</a>
 
@@ -31,7 +30,6 @@
 			<%= form_for(Note.new) do |f| %>
 				<%= f.text_field :name, {placeholder:"#title",class:"span2 input-small"} %> <br />
 				<%= f.text_area :description, {class:"span6 input-small textarea wysihtml5-editor placeholder",style:"height:200px",placeholder:"#putyournotehere"} %> <br />
-				<%= f.text_field :noted_by, {placeholder:"#createdby",class:"span2 input-small"} %> <br />
 				<%= button_tag type:"submit",class:"btn btn-primary" do %>
 					<i class="icon icon-plus-sign icon-white"></i> Add Note
 				<% end %>
@@ -41,8 +39,15 @@
 
 		<hr />
 	</div>
-
 </div>
+<% else %>
+<div class="row-fluid">
+	<div class="span12">
+		<code>Please login to start creating notes.</code>
+		<hr />
+	</div>
+</div>
+<% end %>
 
 <div class="row-fluid">
 
