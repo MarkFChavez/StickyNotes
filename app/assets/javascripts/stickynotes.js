@@ -17,6 +17,7 @@ $(document).ready(function() {
 		$(this).find('.note-creator').hide();
 	});
 
+
 	$("textarea").wysihtml5();
 
 });
