@@ -9,6 +9,7 @@ class NotesController < ApplicationController
 
 	def index
 		@notes = Note.order("created_at DESC").limit(5)
+		@users = User.order("created_at DESC").limit(5)
 	end
 
 	def show

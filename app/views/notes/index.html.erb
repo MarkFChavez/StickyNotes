@@ -28,8 +28,8 @@
 		<div id="create-note">
 			
 			<%= form_for(Note.new) do |f| %>
-				<%= f.text_field :name, {placeholder:"#title",class:"span2 input-small"} %> <br />
-				<%= f.text_area :description, {class:"span6 input-small textarea wysihtml5-editor placeholder",style:"height:200px",placeholder:"#putyournotehere"} %> <br />
+				<%= f.text_field :name, {placeholder:"#title",class:"span2 input-small",required:"required"} %> <br />
+				<%= f.text_area :description, {class:"span6 input-small textarea wysihtml5-editor placeholder",style:"height:200px",placeholder:"#putyournotehere",required:"required"} %> <br />
 				<%= button_tag type:"submit",class:"btn btn-primary" do %>
 					<i class="icon icon-plus-sign icon-white"></i> Add Note
 				<% end %>
@@ -43,7 +43,7 @@
 <% else %>
 <div class="row-fluid">
 	<div class="span12">
-		<code>Please login to start creating notes.</code>
+		<code>Please login to start creating & viewing notes.</code>
 		<hr />
 	</div>
 </div>
@@ -52,9 +52,20 @@
 <div class="row-fluid">
 
 	<div class="span4">
-		<p class="lead"> Marked Notes </p>
+		<p class="lead"> Registered Users </p>
 		<div>
-			<p> This feature is coming soon. </p>
+			<% if !@users.empty? %>
+				<ul>
+					<% @users.each do |user| %>
+						<li> 
+							<span class="badge badge-important"><%= user.email %></span> <br />
+							<small style="margin-left:20px"> <i class="icon icon-bookmark"></i> Has <%= pluralize(user.notes.count, "note") %> & <%= pluralize(user.comments.count, "comment") %> </small>
+						</li>
+					<% end %>
+				</ul>
+			<% else %>
+				No users registered.
+			<% end %>
 		</div>
 	</div>
 
