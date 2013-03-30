@@ -78,7 +78,7 @@
 							<p> 
 								<%= simple_format comment.text %> 
 							</p>
-							<small> <%= comment.comment_by %> </small>
+							<small> <%= comment.user.email %> </small>
 						</blockquote>
 						<hr />
 					<% end %>

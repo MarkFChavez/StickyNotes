@@ -7,9 +7,8 @@ class CommentsController < ApplicationController
 	end
 
 	def create
-		@comment = @note.comments.build(params[:comment])
-		@comment.comment_by = current_user.email
-
+		@comment = @note.comments.build(params[:comment].merge!(user: current_user))
+		
 		if @comment.save
 			redirect_to note_path(@note), notice: "Feedback added"
 		else
