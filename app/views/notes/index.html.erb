@@ -23,6 +23,10 @@
 <% if user_signed_in? %>
 <div class="row-fluid">
 	<div class="span12">
+		<% if user_signed_in? && current_user.is_admin? %>
+			<p class="lead"> You are an administrator </p>
+		<% end %>
+		
 		<a id="toggle-form" href="#" class="btn"><i class="icon icon-asterisk"></i> Create Note!</a>
 
 		<div id="create-note">
@@ -43,7 +47,7 @@
 <% else %>
 <div class="row-fluid">
 	<div class="span12">
-		<code>Please login to start creating & viewing notes.</code>
+		<em>Login to start creating & viewing notes.</em>
 		<hr />
 	</div>
 </div>
