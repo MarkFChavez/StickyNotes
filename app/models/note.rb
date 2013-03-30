@@ -1,10 +1,14 @@
 class Note < ActiveRecord::Base
-	has_many :comments, dependent: :delete_all
 
+	#associations
+	has_many :comments, dependent: :delete_all
+	belongs_to :user
+
+	#validations
 	validates :name, presence: true, uniqueness: true
 	validates :description, presence: true
 	
-	belongs_to :user
-
-	scope :recent, lambda { |num = nil| order('created_at DESC').limit(num) }
+	#scopes
+	scope :recent, lambda { |num=nil| order('created_at DESC').limit(num) }
+	
 end
