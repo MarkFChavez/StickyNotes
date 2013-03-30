@@ -59,7 +59,7 @@
 					<% @users.each do |user| %>
 						<li> 
 							<span class="badge badge-important"><%= user.email %></span> <br />
-							<small style="margin-left:20px"> <i class="icon icon-bookmark"></i> Has <%= pluralize(user.notes.count, "note") %> & <%= pluralize(user.comments.count, "comment") %> </small>
+							<small style="margin-left:20px"> <i class="icon icon-bookmark"></i> Has <%= pluralize(user.notes.count, "note") %> & <%= pluralize(Comment.where(comment_by: user.email).count, "comment") %> </small>
 						</li>
 					<% end %>
 				</ul>
