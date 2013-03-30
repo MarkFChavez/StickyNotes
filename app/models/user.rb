@@ -10,4 +10,6 @@ class User < ActiveRecord::Base
 
   has_many :notes, dependent: :delete_all
   has_many :comments, through: :notes
+
+  default_scope order('created_at DESC')
 end
