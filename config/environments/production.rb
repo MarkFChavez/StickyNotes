@@ -69,8 +69,8 @@ StickyNotes::Application.configure do
     :address              => "smtp.gmail.com",
     :port                 => 587,
     :domain               => 'stickynotes.herokuapp.com',
-    :user_name            => <%= ENV["MAIL_USERNAME"] %>,
-    :password             => <%= ENV["MAIL_PASSWORD"] %>,
+    :user_name            => "joelchavez999@gmail.com",
+    :password             => "CISCO#07",
     :authentication       => 'plain',
     :enable_starttls_auto => true
   }
