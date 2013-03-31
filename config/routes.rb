@@ -7,6 +7,10 @@ StickyNotes::Application.routes.draw do
   resources :notes do
     resources :comments
   end
+
+  get "contact_us/new"
+  post "contact_us/send_email", as: "send_email_path"
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

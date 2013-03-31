@@ -1,0 +1,30 @@
+
+<div class="row-fluid">
+
+	<div class="span12">
+		<h1> Contact Us </h1>
+		<hr />
+	</div>
+
+</div>
+
+<div class="row-fluid">
+
+	<div class="span12">
+		<%= form_for @contact_form, url: :send_email_path do |f| %>
+
+			<%= f.label :name %>
+			<div> <%= f.text_field :name, {placeholder:"#juandelacruz"} %> </div>
+
+			<%= f.label :email %>
+			<div> <%= f.email_field :email, placeholder:"#juandelacruz@yahoo.com" %> </div>
+
+			<%= f.label :problem %>
+			<div> <%= f.text_area :problem, {style:"height:150px", class:"span3", placeholder:"#problem-feedbacks-suggestions"} %> </div>
+
+			<%= f.submit "Submit", {class:"btn"} %>
+
+		<% end %>
+	</div>
+
+</div>
