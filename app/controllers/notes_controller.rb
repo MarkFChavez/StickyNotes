@@ -17,8 +17,7 @@ class NotesController < ApplicationController
 	end
 
 	def create
-		@note = Note.create(params[:note])
-		@note.user = current_user
+		@note = current_user.notes.create(params[:note])
 
 		if @note.save
 			redirect_to root_path, notice: "Note created."
