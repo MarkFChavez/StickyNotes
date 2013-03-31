@@ -16,5 +16,7 @@ class CommentsController < ApplicationController
 			redirect_to note_path(@note), alert: "Feedback not added"
 		end
 	end
-	
+
+	private
+
 end
