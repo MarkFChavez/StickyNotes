@@ -40,8 +40,8 @@ StickyNotes::Application.configure do
     :address              => "smtp.gmail.com",
     :port                 => 587,
     :domain               => 'baci.lindsaar.net',
-    :user_name            => "myemail",
-    :password             => "mypassword",
+    :user_name            => "email",
+    :password             => "password",
     :authentication       => 'plain',
     :enable_starttls_auto => true  
   }
