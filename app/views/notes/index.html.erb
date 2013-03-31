@@ -72,6 +72,21 @@
 				No users registered.
 			<% end %>
 		</div>
+
+		<p class="lead"> Administrators </p>
+		<div>
+			<% if !@admins.empty? %>
+				<ul>
+					<% @admins.each do |admin| %>
+						<li> 
+							<span class="badge badge-info"><%= admin.email %></span> <br />
+						</li>
+					<% end %>
+				</ul>
+			<% else %>
+				No admins registered.
+			<% end %>
+		</div>
 	</div>
 
 	<div class="span6">

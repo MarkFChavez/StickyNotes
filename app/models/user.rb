@@ -12,4 +12,7 @@ class User < ActiveRecord::Base
   has_many :comments, through: :notes
 
   default_scope order('created_at DESC')
+
+  scope :normal_users, where(is_admin: false)
+  scope :administrators, where(is_admin: true)
 end
