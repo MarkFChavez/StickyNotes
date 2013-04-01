@@ -7,6 +7,7 @@ StickyNotes::Application.routes.draw do
   resources :notes do
     resources :comments
     get "user_notes", on: :collection
+    put "change_note_visibility", on: :member
   end
 
   get "contact_us/new"

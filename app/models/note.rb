@@ -10,5 +10,7 @@ class Note < ActiveRecord::Base
 	
 	#scopes
 	scope :recent, lambda { |num=nil| order('created_at DESC').limit(num) }
+	scope :public, where(public: true)
+	scope :private, where(public: false)
 	
 end

@@ -20,8 +20,16 @@
 
 				<!-- only the creator will be able to do these actions -->
 				<% if (user_signed_in? && note.user == current_user) || (user_signed_in? && current_user.is_admin?) %>
+
+					<% if note.public? %>
+						<%= link_to raw("<i class='icon icon-th-large icon-white'></i> Mark as private"), change_note_visibility_note_path(note), method: :put, class:"btn btn-inverse btn-small" %>
+					<% else %>
+						<%= link_to raw("<i class='icon icon-th-large icon-white'></i> Mark as public"), change_note_visibility_note_path(note), method: :put, class:"btn btn-inverse btn-small" %>
+					<% end %>
+
 					<%= link_to raw("<i class='icon icon-th-large icon-white'></i> Edit"), edit_note_path(note), class:"btn btn-inverse btn-small" %>
 					<%= link_to raw("<i class='icon icon-remove icon-white'></i> Delete"), note, method: :delete, remote: true, confirm: "Are you sure you want to delete?", class:"btn btn-danger btn-small" %>
+
 				<% end %>
 				
 			</div>

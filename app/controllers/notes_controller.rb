@@ -8,7 +8,7 @@ class NotesController < ApplicationController
 	end	
 
 	def index
-		@notes = Note.recent(5)
+		@notes = Note.public.recent(5)
 		@users = User.normal_users
 		@admins = User.administrators
 	end
@@ -47,6 +47,22 @@ class NotesController < ApplicationController
 
 	def user_notes
 		@notes = current_user.notes
+	end
+
+	def change_note_visibility
+		@note = Note.find(params[:id])
+
+		if @note.public?
+			@note.public = false
+		else
+			@note.public = true
+		end
+
+		if @note.save
+			redirect_to user_notes_notes_path, notice: "Note marked!"
+		else
+			redirect_to user_notes_notes_path, alert: "Error marking note!"
+		end
 	end
 
 end
