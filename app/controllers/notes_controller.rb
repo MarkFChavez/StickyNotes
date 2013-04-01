@@ -46,7 +46,7 @@ class NotesController < ApplicationController
 	end
 
 	def user_notes
-		@notes = current_user.notes
+		@notes = current_user.notes.recent
 	end
 
 	def change_note_visibility
