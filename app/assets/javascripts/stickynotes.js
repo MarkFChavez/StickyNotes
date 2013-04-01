@@ -20,4 +20,8 @@ $(document).ready(function() {
 
 	$("textarea").wysihtml5();
 
+	$(".loading-btn").on('click', function() {
+		$(this).button('loading');
+	});
+
 });

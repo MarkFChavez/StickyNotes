@@ -34,7 +34,7 @@
 			<%= form_for(Note.new) do |f| %>
 				<%= f.text_field :name, {placeholder:"#title",class:"span2 input-small",required:"required"} %> <br />
 				<%= f.text_area :description, {class:"span6 input-small textarea wysihtml5-editor placeholder",style:"height:200px",placeholder:"#putyournotehere",required:"required"} %> <br />
-				<%= button_tag type:"submit",class:"btn btn-primary" do %>
+				<%= button_tag type:"submit",class:"btn btn-primary loading-btn",data-loading-text:"Processing..." do %>
 					<i class="icon icon-plus-sign icon-white"></i> Add Note
 				<% end %>
 			<% end %>
