@@ -45,4 +45,8 @@ class NotesController < ApplicationController
 		end
 	end
 
+	def user_notes
+		@notes = current_user.notes
+	end
+
 end

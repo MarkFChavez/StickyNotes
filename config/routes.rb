@@ -6,6 +6,7 @@ StickyNotes::Application.routes.draw do
 
   resources :notes do
     resources :comments
+    get "user_notes", on: :collection
   end
 
   get "contact_us/new"
