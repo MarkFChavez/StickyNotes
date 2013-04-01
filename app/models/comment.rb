@@ -10,7 +10,9 @@ class Comment < ActiveRecord::Base
 	validates :text, presence: true
 
 	def send_email_to_user
-		Notification.send_email_to_user(self.note.user, self.user).deliver
+		if self.user != self.note.user
+			Notification.send_email_to_user(self.note.user, self.user).deliver
+		end
 	end
 	
 end
