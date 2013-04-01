@@ -32,6 +32,9 @@ class NotesController < ApplicationController
 	end
 
 	def edit
+		if current_user != @note.user
+			redirect_to root_path
+		end
 	end
 
 	def update
