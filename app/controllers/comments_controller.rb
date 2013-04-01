@@ -17,6 +17,4 @@ class CommentsController < ApplicationController
 		end
 	end
 
-	private
-
 end

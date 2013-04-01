@@ -12,4 +12,10 @@ class Notification < ActionMailer::Base
 
     mail to: "los_populares@yahoo.com"
   end
+
+  def send_email_to_user(note_user, comment_user)
+    @greeting = "Hi #{note_user.email},"
+    @name = !comment_user.nil? ? comment_user : "Someone"
+    mail to: note_user.email, subject: "You received a comment!"
+  end
 end

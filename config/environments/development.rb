@@ -39,7 +39,7 @@ StickyNotes::Application.configure do
   config.action_mailer.smtp_settings = {
     :address              => "smtp.gmail.com",
     :port                 => 587,
-    :domain               => 'baci.lindsaar.net',
+    :domain               => 'localhost',
     :user_name            => "email",
     :password             => "password",
     :authentication       => 'plain',
