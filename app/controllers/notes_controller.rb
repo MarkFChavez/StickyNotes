@@ -28,7 +28,11 @@ class NotesController < ApplicationController
 	end
 
 	def destroy
-		@note.destroy
+		if @note.user == current_user or current_user.is_admin?
+			@note.destroy
+		else
+			redirect_to root_path, alert: "Unable to delete"
+		end
 	end
 
 	def edit
