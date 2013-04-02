@@ -21,7 +21,7 @@ class NotesController < ApplicationController
 		@note = current_user.notes.create(params[:note])
 
 		if @note.save
-			redirect_to root_path, notice: "Note created. View <a href=\"#{url_for(user_notes_notes_path)}\">here</a>".html_safe
+			redirect_to root_path, notice: "Note created but by default it is private. View <a href=\"#{url_for(user_notes_notes_path)}\">here</a>".html_safe
 		else
 			redirect_to root_path, alert: "Error creating note."
 		end
