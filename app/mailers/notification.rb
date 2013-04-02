@@ -23,7 +23,7 @@ class Notification < ActionMailer::Base
     @greeting = "Sticky Notes"
     @message = "Someone posted a new note."
 
-    mail to: user.email
+    mail to: user.email, subject: "Sticky Notes"
   end
 
 end
