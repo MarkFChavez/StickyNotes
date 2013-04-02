@@ -18,4 +18,12 @@ class Notification < ActionMailer::Base
     @name = !comment_user.nil? ? comment_user.email : "Someone"
     mail to: note_user.email, subject: "You received a comment!"
   end
+
+  def send_notif(user)
+    @greeting = "Sticky Notes"
+    @message = "Someone posted a new note."
+
+    mail to: user.email
+  end
+
 end
