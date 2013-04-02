@@ -8,7 +8,7 @@ class NotesController < ApplicationController
 	end	
 
 	def index
-		@notes = Note.public.recent(5)
+		@notes = Note.public.recent
 		@users = User.normal_users
 		@admins = User.administrators
 	end
